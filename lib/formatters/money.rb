@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'default'
 
 module Formatters
@@ -21,7 +23,7 @@ module Formatters
     def output(row_index:, height:)
       integer, decimal = data[row_index].split('.')
       integer_output = format_integer(integer)
-      money_output = format_money(integer_output.concat('.', decimal))
+      money_output = format_money(integer_output.concat(',', decimal))
       element_output = 2.upto(height).map { format_money }
       element_output.unshift(money_output)
     end
